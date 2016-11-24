@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
@@ -8,7 +9,7 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="4"
+        android:layout_weight="3"
         android:orientation="vertical">
 
         <LinearLayout
@@ -24,32 +25,50 @@
                 android:orientation="horizontal"
                 android:weightSum="3">
 
-                <EditText
-                    android:id="@+id/ETDice1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginRight="2dp"
-                    android:layout_weight="1"
-                    android:inputType="number" />
+                <!--<EditText-->
+                <!--android:id="@+id/ETDice1"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="2dp"-->
+                <!--android:layout_marginRight="2dp"-->
+                <!--android:layout_weight="1"-->
+                <!--android:imeOptions="actionNext"-->
+                <!--android:inputType="number"-->
+                <!--android:maxLength="1" />-->
 
-                <EditText
-                    android:id="@+id/ETDice2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginRight="2dp"
-                    android:layout_weight="1"
-                    android:inputType="number" />
+                <!--<EditText-->
+                <!--android:id="@+id/ETDice2"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="2dp"-->
+                <!--android:layout_marginRight="2dp"-->
+                <!--android:layout_weight="1"-->
+                <!--android:imeOptions="actionNext"-->
+                <!--android:inputType="number"-->
+                <!--android:maxLength="1" />-->
 
-                <EditText
-                    android:id="@+id/ETDice3"
-                    android:layout_width="wrap_content"
+                <!--<EditText-->
+                <!--android:id="@+id/ETDice3"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="2dp"-->
+                <!--android:layout_marginRight="2dp"-->
+                <!--android:layout_weight="1"-->
+                <!--android:imeOptions="actionDone"-->
+                <!--android:inputType="number"-->
+                <!--android:maxLength="1" />-->
+
+                <me.philio.pinentry.PinEntryView
+                    android:id="@+id/pin_entry_SUE"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginRight="2dp"
+                    android:layout_gravity="center_horizontal"
                     android:layout_weight="1"
-                    android:inputType="number" />
+                    app:accentType="character"
+                    app:digitTextSize="8sp"
+                    app:digitWidth="20dp"
+                    app:mask=""
+                    app:numDigits="3" />
             </LinearLayout>
 
             <LinearLayout
@@ -65,7 +84,7 @@
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"
                     android:layout_weight="1"
-                    android:text="Sub" />
+                    android:text="S" />
 
                 <Button
                     android:id="@+id/BtnResultClear"
@@ -74,7 +93,7 @@
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"
                     android:layout_weight="1"
-                    android:text="Clear" />
+                    android:text="Clr" />
             </LinearLayout>
         </LinearLayout>
 
@@ -87,7 +106,7 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="6"
+        android:layout_weight="7"
         android:orientation="vertical">
 
         <LinearLayout

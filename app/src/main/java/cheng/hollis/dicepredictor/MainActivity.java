@@ -8,11 +8,13 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import me.philio.pinentry.PinEntryView;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private DiceReslutListAdapter diceReslutListAdapter;
     private DicePredictorListAdapter dicePredictorListAdapter;
     private Boolean IsPredictable = false;
+    private PinEntryView pin_entry_SUE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +34,10 @@ public class MainActivity extends AppCompatActivity {
 
         LVDiceResult = (ListView) findViewById(R.id.LVDiceResult);
         LVDicePredictor = (ListView) findViewById(R.id.LVDicePredictor);
-        final EditText ETDice1 = (EditText) findViewById(R.id.ETDice1);
-        final EditText ETDice2 = (EditText) findViewById(R.id.ETDice2);
-        final EditText ETDice3 = (EditText) findViewById(R.id.ETDice3);
+//        final EditText ETDice1 = (EditText) findViewById(R.id.ETDice1);
+//        final EditText ETDice2 = (EditText) findViewById(R.id.ETDice2);
+//        final EditText ETDice3 = (EditText) findViewById(R.id.ETDice3);
+        pin_entry_SUE = (PinEntryView) findViewById(R.id.pin_entry_SUE);
         Button BtnDiceResultSubmit = (Button) findViewById(R.id.BtnDiceResultSubmit);
         Button BtnResultClear = (Button) findViewById(R.id.BtnResultClear);
         Button BtnCal = (Button) findViewById(R.id.BtnCal);
@@ -44,14 +48,25 @@ public class MainActivity extends AppCompatActivity {
         BtnDiceResultSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int ResultDice1 = Integer.parseInt(ETDice1.getText().toString());
-                int ResultDice2 = Integer.parseInt(ETDice2.getText().toString());
-                int ResultDice3 = Integer.parseInt(ETDice3.getText().toString());
-                if (ResultDice1 > 6 || ResultDice1 < 1 ||
-                        ResultDice2 > 6 || ResultDice2 < 1 ||
-                        ResultDice3 > 6 || ResultDice3 < 1) {
-                    Toast.makeText(MainActivity.this, "Please Input 1-6!", Toast.LENGTH_LONG).show();
+
+//                if (ResultDice1 > 6 || ResultDice1 < 1 ||
+//                        ResultDice2 > 6 || ResultDice2 < 1 ||
+//                        ResultDice3 > 6 || ResultDice3 < 1) {
+//                    Toast.makeText(MainActivity.this, "Please Input 1-6!", Toast.LENGTH_LONG).show();
+//                } else {
+//                    dicResultAL.add(new DiceResult(ResultDice1, ResultDice2, ResultDice3));
+//                    Log.v("TEST", "ResultDice1=" + ResultDice1 + ",ResultDice2=" + ResultDice2 + ",ResultDice3=" + ResultDice3);
+//                    diceReslutListAdapter = new DiceReslutListAdapter(MainActivity.this, dicResultAL);
+//                    LVDiceResult.setAdapter(diceReslutListAdapter);
+//                    IsPredictable = true;
+//                }
+                if (pin_entry_SUE.getText().length() != 3) {
+                    Toast.makeText(MainActivity.this, "Please Input 3 digits", Toast.LENGTH_LONG).show();
                 } else {
+                    int num = Integer.parseInt(pin_entry_SUE.getText().toString());
+                    int ResultDice1 = Math.round(num / 100);
+                    int ResultDice2 = Math.round((num - (ResultDice1 * 100)) / 10);
+                    int ResultDice3 = Math.round(num - (ResultDice1 * 100) - (ResultDice2 * 10));
                     dicResultAL.add(new DiceResult(ResultDice1, ResultDice2, ResultDice3));
                     Log.v("TEST", "ResultDice1=" + ResultDice1 + ",ResultDice2=" + ResultDice2 + ",ResultDice3=" + ResultDice3);
                     diceReslutListAdapter = new DiceReslutListAdapter(MainActivity.this, dicResultAL);
